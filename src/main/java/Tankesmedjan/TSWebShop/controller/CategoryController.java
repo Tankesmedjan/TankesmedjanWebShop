@@ -23,7 +23,6 @@ public class CategoryController {
     public List<CategoryEntity> list() {
         return categoryService.listAllCats();
     }
-
     @GetMapping("/{id}")
     public ResponseEntity<CategoryEntity> get(@PathVariable Integer id) {
         try {
@@ -33,4 +32,5 @@ public class CategoryController {
             return new ResponseEntity<CategoryEntity>(HttpStatus.NOT_FOUND);
         }
     }
+
 }

@@ -6,45 +6,45 @@ import javax.persistence.*;
 @Table(name="Categories")
 public class CategoryEntity {
 
-    private String name;
-    private String shortname;
-    private int id;
-    private int parentid;
+    private int categoryId;
+    private int parentId;
+    private String categoryName;
+    private String friendlyURL;
 
-    public CategoryEntity(){}
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getShortname() {
-        return shortname;
-    }
-
-    public void setShortname(String shortname) {
-        this.shortname = shortname;
+    public CategoryEntity() {
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int getId() {
-        return id;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public int getParentid() {
-        return parentid;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
-    public void setParentid(int parentid) {
-        this.parentid = parentid;
+    public String getFriendlyURL() {
+        return friendlyURL;
+    }
+
+    public void setFriendlyURL(String friendlyURL) {
+        this.friendlyURL = friendlyURL;
+    }
+
+    public int getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(int parentId) {
+        this.parentId = parentId;
     }
 }
 
