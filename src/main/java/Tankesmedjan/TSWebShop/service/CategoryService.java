@@ -14,5 +14,5 @@ import java.util.List;
 public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
-    public List<CategoryEntity> listAllUser() {return categoryRepository.findAll();}
+    public List<CategoryEntity> listAllCats() {return categoryRepository.findAll();}
 }
