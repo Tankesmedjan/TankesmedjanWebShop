@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html xmlns:th>
+<head>
+<title>Tankesmedjan WebShop</title>
+<meta charset="utf-8">
+<!-- CSS Files -->
+<link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+<link rel="stylesheet" type="text/css" media="screen" href="css/menu.css">
+<!--JS FILES -->
+<script src="js/jquery.tools.min.js"></script>
+<script>
+$(function () {
+    $("#prod_nav ul").tabs("#panes > div", {
+        effect: 'fade',
+        fadeOutSpeed: 400
+    });
+});
+</script>
+<script>
+$(document).ready(function () {
+    $(".pane-list li").click(function () {
+        window.location = $(this).find("a").attr("href");
+        return false;
+    });
+});
+</script>
+</head>
+<body>
+<div class="header">
+  <!-- Logo/Title -->
+  <div id="site_title"><a href="#"> <img src="img/TS_logo.png" height="120" alt="" style="z-index:0; float:left;"></a><br/></div>
+  <!-- Main Menu -->
+  <ol id="menu">
+    <li class="active_menu_item"><a href="#">Home</a></li>
+    <li><a href="index.html">Shop</a>
+      <!-- sub menu -->
+      <ol>
+      <th th:each="categories : ${categories}">
+        <li><a th:href="@{categories/{id}(id=${categories.categoryId})}"><b th:text="${categories.categoryName}"></b></a></li>
+	  </th>
+      </ol>
+    </li>
+    <!-- end sub menu -->
+    <li><a href="#">Contact</a></li>
+  </ol>
+</div>
+<!-- END header -->
+<div id="container">
+  <!-- tab panes -->
+  <div id="prod_wrapper">
+    <div id="panes">
+      <div> <img src="img/apple_big.png" alt="">
+        <h5>Random product 1</h5>
+        <p>Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. </p>
+        <p style="text-align:right; margin-right: 16px"><a href="#" class="button">More Info</a> <a href="#" class="button">Buy Now</a></p>
+      </div>
+      <div> <img src="img/apple_big.png" alt="">
+        <h5>Random product 2</h5>
+        <p>Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. </p>
+        <p style="text-align:right; margin-right: 16px"><a href="#" class="button">More Info</a> <a href="#" class="button">Buy Now</a></p>
+      </div>
+      <div> <img src="img/apple_big.png" alt="">
+        <h5>Random product 3</h5>
+        <p>Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. </p>
+        <p style="text-align:right; margin-right: 16px"><a href="#" class="button">More Info</a> <a href="#" class="button">Buy Now</a></p>
+      </div>
+      <div> <img src="img/apple_big.png" alt="">
+        <h5>Random product 4</h5>
+        <p>Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. </p>
+        <p style="text-align:right; margin-right: 16px"><a href="#" class="button">More Info</a> <a href="#" class="button">Buy Now</a></p>
+      </div>
+      <div> <img src="img/apple_big.png" alt="">
+        <h5>Random product 5</h5>
+        <p>Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. </p>
+        <p style="text-align:right; margin-right: 16px"><a href="#" class="button">More Info</a> <a href="#" class="button">Buy Now</a></p>
+      </div>
+    </div>
+    <!-- END tab panes -->
+    <br clear="all">
+    <!-- navigator -->
+    <div id="prod_nav">
+      <ul>
+        <li><a href="#1"><img src="img/apple.png" alt=""><strong>Random product 1</strong> $10.99</a></li>
+        <li><a href="#2"><img src="img/apple.png" alt=""><strong>Random product 2</strong> $10.99</a></li>
+        <li><a href="#3"><img src="img/apple.png" alt=""><strong>Random product 3</strong> $10.99</a></li>
+        <li><a href="#4"><img src="img/apple.png" alt=""><strong>Random product 4</strong> $10.99</a></li>
+        <li><a href="#5"><img src="img/apple.png" alt=""><strong>Random product 5</strong> $10.99</a></li>
+      </ul>
+    </div>
+    <!-- close navigator -->
+  </div>
+  <!-- END prod wrapper -->
+  <div style="clear:both"></div>
+  <p><br/></p>
+  <h3 style="padding: 20px 0">This is "The Think Tank" (Tankesmedjan)</h3>
+  <blockquote>Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. Some random product info. </blockquote>
+</div></body>
+</html>
