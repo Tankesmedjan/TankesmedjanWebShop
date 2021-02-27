@@ -32,7 +32,7 @@ $(document).ready(function () {
   <!-- Main Menu -->
   <ol id="menu">
     <li class="active_menu_item"><a href="#">Home</a></li>
-    <li><a href="index.html">Shop</a>
+    <li><a href="#">Shop</a>
       <!-- sub menu -->
       <ol>
       <th th:each="categories : ${categories}">
@@ -81,11 +81,9 @@ $(document).ready(function () {
     <!-- navigator -->
     <div id="prod_nav">
       <ul>
-        <li><a href="#1"><img src="img/apple.png" alt=""><strong>Random product 1</strong> $10.99</a></li>
-        <li><a href="#2"><img src="img/apple.png" alt=""><strong>Random product 2</strong> $10.99</a></li>
-        <li><a href="#3"><img src="img/apple.png" alt=""><strong>Random product 3</strong> $10.99</a></li>
-        <li><a href="#4"><img src="img/apple.png" alt=""><strong>Random product 4</strong> $10.99</a></li>
-        <li><a href="#5"><img src="img/apple.png" alt=""><strong>Random product 5</strong> $10.99</a></li>
+        <th th:each="products : ${products}">
+        <li><a href="#"><img src="img/apple.png" alt=""><strong><b th:text="${products.productName}"></b></strong> $<b th:text="${products.productPrice}"></b></a></li>
+        </th>
       </ul>
     </div>
     <!-- close navigator -->
