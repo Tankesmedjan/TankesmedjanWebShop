@@ -96,7 +96,9 @@ body {	font-family: Arial, Helvetica, sans-serif;
 
 .no_display {display: none;}
 
-h1, h2, h3, h4 { font-family: "QuicksandBook", Arial, sans-serif} 
+h1, h2, h3, h4 { font-family: "QuicksandBook", Arial, sans-serif}
+
+.title {padding-left:10px; padding-top:10px;}
 
 h1 {font-size: 34px;  padding: 0 0 20px; color: #000 }
 
