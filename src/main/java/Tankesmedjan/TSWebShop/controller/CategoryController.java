@@ -24,6 +24,7 @@ public class CategoryController {
     @GetMapping("")
     public Model listCategories(Model model) {
         model.addAttribute("categories", categoryService.listAllCats());
+        model.addAttribute("message", "Hi guest! Welcome to our eminent webshop!");
         return model;
     }
     public List<CategoryEntity> list() {
