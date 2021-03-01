@@ -25,5 +25,4 @@ public class startpageController {
         model.addAttribute("products", productService.listRandomProds());
         return "categories";
     }
-
 }

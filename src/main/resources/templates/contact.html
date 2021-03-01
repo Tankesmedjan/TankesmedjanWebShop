@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th>
+<head>
+    <title>Tankesmedjan WebShop</title>
+    <meta charset="utf-8">
+    <!-- CSS Files -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/menu.css">
+    <!--JS FILES -->
+    <script src="js/jquery.tools.min.js"></script>
+    <script>
+$(function () {
+    $("#prod_nav ul").tabs("#panes > div", {
+        effect: 'fade',
+        fadeOutSpeed: 400
+    });
+});
+</script>
+    <script>
+$(document).ready(function () {
+    $(".pane-list li").click(function () {
+        window.location = $(this).find("a").attr("href");
+        return false;
+    });
+});
+</script>
+</head>
+<body>
+<div class="header">
+    <!-- Logo/Title -->
+    <div id="site_title"><a href="#"> <img src="img/TS_logo.png" height="120" alt="" style="z-index:0; float:left;"></a><br/></div>
+    <!-- Main Menu -->
+    <ol id="menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/category">Categories</a>
+            <!-- sub menu -->
+            <ol>
+                <th th:each="categories : ${categories}">
+                    <li><a th:href="@{categories/{id}(id=${categories.categoryId})}"><b th:text="${categories.categoryName}"></b></a></li>
+                </th>
+            </ol>
+        </li>
+        <!-- end sub menu -->
+        <li class="active_menu_item"><a href="/contact">Contact</a></li>
+    </ol>
+</div>
+<!-- END header -->
+<div id="container">
+    <div style="clear:both"></div>
+    <p><br/></p>
+    <h3 style="padding: 20px 0">This is "The Think Tank" (Tankesmedjan)</h3>
+    <blockquote>
+        Gatanvägen 1, Storfors<br/>
+        123 45, Göteborg<br/>
+        Sweden
+    </blockquote>
+</div></body>
+</html>
