@@ -1,0 +1,395 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<html xmlns:th>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Tankesmedjans 'The Think Tank's Webshop</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/plugins/plugins.css">
+
+
+    <!-- Main Style CSS (Please use minify version for better website load performance) -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!--<link rel="stylesheet" href="assets/css/style.min.css">-->
+
+</head>
+
+<body>
+
+<header class="header-area haeder-default  black-logo-version ptb_lg--40 ptb_md--40 ptb_sm--30">
+    <div class="header-wrapper container">
+        <div class="row align-items-center">
+            <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-6">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="assets/images/logo/TS_logo.png" width="140" alt="Tankesmedjan logo">
+                    </a>
+                </div>
+            </div>
+            <div class="col-xl-9 d-none d-xl-block">
+                <nav class="mainmenu__nav">
+                    <ul class="primary-menu megamenu-wrapper">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About us</a></li>
+                        <li class="lavel-1"><a href="/categories">Categories</a>
+                            <ul class="dropdown__menu">
+                                <th th:each="categories : ${categories}">
+                                    <li><a th:href="@{categories/{id}(id=${categories.categoryId})}"><span th:text="${categories.categoryName}"></span></a></li>
+                                </th>
+                            </ul>
+                        </li>
+                        <li><a href="/contact">Contact</a></li>
+                        <li><form th:action="@{/search}" style="padding-top:37px;">
+                            <input type="text" name="keyword" placeholder="Search for product" id="keyword" th:value="${keyword}" required style="width:200px; font-size:12px;"/> <input type="submit" value="Search" style="padding:10px; width:100px; font-size:12px;"/>
+                        </form></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- CART ICON -->
+            <div class="col-xl-1 col-lg-6 col-md-6 col-sm-6 col-6">
+                <div class="header-icon d-flex justify-content-end cart text-right">
+                    <a class="cart-trigger" href="#">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span class="cart-count">11</span>
+                    </a>
+                    <a class="hamburger-trigger d-block d-xl-none pl--15" href="#">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- CONTENTS OF CART -->
+
+<div class="search-flyoveray"></div>
+<div class="cart-flyout">
+    <div class="cart-flyout-inner">
+        <a class="btn-close-cart" href="#">
+            <i class="fa fa-times"></i>
+        </a>
+        <div class="cart-flyout__content">
+            <div class="cart-flyout__heading">Shopping Cart</div>
+            <div class="widget_shopping_cart_content">
+                <ul class="product_list_widget">
+                    <li>
+                        <div class="thumb">
+                            <img src="assets/images/product/sm-product-1.jpg" alt="product">
+                        </div>
+                        <div class="content">
+                            <h6><a href="single-product.html">Really Sweet Sweater</a></h6>
+                            <div class="quntity">11 × $59.99</div>
+                            <button class="remove-btn">×</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <p class="minicart__total">Subtotal: <span class="price">659.89</span></p>
+            <div class="cart__btn">
+                <a href="/cart">View cart</a>
+                <a href="/checkout">Checkout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Start Banner Area -->
+<div class="slider-area slider--2">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="slider-activation">
+                    <!-- Start Single Slide -->
+                    <div class="slide-content bg_image bg_image--1 d-flex align-items-center">
+                        <div class="slide-text plr--50">
+                            <p style="color:#FFFFFF;">Shop some pretty things and make yourself smile.</p>
+                            <div class="shop-now-btn">
+                                <button type="button" style="border-color:#FFFFFF; color:#FFFFFF;">Shop Now <i class="fa fa-arrow-right" style="color:#FFFFFF;"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Slide -->
+                    <!-- Start Single Slide -->
+                    <div class="slide-content bg_image bg_image--2 d-flex align-items-center">
+                        <div class="slide-text plr--50">
+                            <p style="color:#FFFFFF;">Lorem Ipsum is simply dummy text of the printing and <br> typesetting industry the printing and typesetting industry.</p>
+                            <div class="shop-now-btn">
+                                <button type="button" style="border-color:#FFFFFF; color:#FFFFFF;">Shop Now <i class="fa fa-arrow-right" style="color:#FFFFFF;"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Slide -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Banner Area -->
+
+<div class="main-wrapper">
+    <div class="container">
+        <br/><br/>
+
+        <h4>Search Results</h4>
+        <h5 th:if="${searchResult.empty}"> No products found for your search " <span th:text="${keyword}"></span> " </h5>
+        <table><tbody>
+        <tr th:each="searchResult : ${searchResult}">
+            <td width="150">
+                <img th:src="@{${'/assets/images/product/sm-product-' + searchResult.productId + '.jpg'}}" alt="Product Images" />
+            </td>
+            <td valign="top" align="left">
+                <a th:href="@{product/{id}(id=${searchResult.productId})}"><h5><span th:text="${searchResult.productName}"></span></h5> <h6><b><span th:text="${searchResult.shortDescription}"></span></b></h6><h6><small>$<span th:text="${searchResult.productPrice}"></span></small></h6> </a><br/>
+            </td>
+            </tr>
+
+        </tbody>
+        </table>
+    </div>
+    <!-- Start Product Feature Tab -->
+    <div class="product-sale-area pt--70 bg-color" data-bg-color="#ffffff" th:if="${featuredproducts != null}">
+        <div class="container">
+            <div class="row align-items-center row--0 section-border-bottom">
+                <div class="col-lg-6 col-md-12">
+                    <div class="section-title--2 text-center text-lg-left">
+                        <h2 class="title">Featured Product</h2>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <!-- Start Product Tab -->
+                    <ul class="nav nav-tabs onsale-tab tab-style--2" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Featured</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">On Sale</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Top Rated</a>
+                        </li>
+                    </ul>
+                    <!-- End Product Tab -->
+                </div>
+            </div>
+            <div class="row mt--30">
+                <div class="col-lg-12">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row">
+                                <th th:each="featuredproducts : ${featuredproducts}">
+                                    <!-- Start Single Product -->
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt--30">
+                                        <div class="product">
+                                            <div class="inner">
+                                                <div class="thumbnail">
+                                                    <a th:href="@{product-details/{id}(id=${featuredproducts.productId})}">
+                                                        <img th:src="@{${'/assets/images/product/product-' + featuredproducts.productId + '.jpg'}}" alt="Product Images">
+                                                    </a>
+                                                </div>
+                                                <div class="product-hover-action">
+                                                    <div class="hover-inner">
+                                                        <a href="/cart"><i class="fa fa-cart-plus"></i></a>
+                                                        <a href="/wishlist"><i class="fa fa-heart-o"></i></a>
+                                                        <a href="/compare"><i class="fa fa-repeat"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="content">
+                                                <h2><a th:href="@{product-details/{id}(id=${featuredproducts.productId})}"><span th:text="${featuredproducts.productName}"></span></a></h2>
+                                                <span class="prize">$<span th:text="${featuredproducts.productPrice}"></span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Single Product -->
+                                </th>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="row">
+                                <th th:each="featuredproducts : ${featuredproducts}">
+                                    <!-- Start Single Product -->
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt--30">
+                                        <div class="product">
+                                            <div class="inner">
+                                                <div class="thumbnail">
+                                                    <a th:href="@{product-details/{id}(id=${featuredproducts.productId})}">
+                                                        <img th:src="@{${'/assets/images/product/product-' + featuredproducts.productId + '.jpg'}}" alt="Product Images">
+                                                    </a>
+                                                </div>
+                                                <div class="product-hover-action">
+                                                    <div class="hover-inner">
+                                                        <a href="/cart"><i class="fa fa-cart-plus"></i></a>
+                                                        <a href="/wishlist"><i class="fa fa-heart-o"></i></a>
+                                                        <a href="/compare"><i class="fa fa-repeat"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="content">
+                                                <h2><a th:href="@{product-details/{id}(id=${featuredproducts.productId})}"><span th:text="${featuredproducts.productName}"></span></a></h2>
+                                                <span class="prize">$<span th:text="${featuredproducts.productPrice}"></span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Single Product -->
+                                </th>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="row">
+                                <th th:each="featuredproducts : ${featuredproducts}">
+                                    <!-- Start Single Product -->
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt--30">
+                                        <div class="product">
+                                            <div class="inner">
+                                                <div class="thumbnail">
+                                                    <a th:href="@{product-details/{id}(id=${featuredproducts.productId})}">
+                                                        <img th:src="@{${'/assets/images/product/product-' + featuredproducts.productId + '.jpg'}}" alt="Product Images">
+                                                    </a>
+                                                </div>
+                                                <div class="product-hover-action">
+                                                    <div class="hover-inner">
+                                                        <a href="/cart"><i class="fa fa-cart-plus"></i></a>
+                                                        <a href="/wishlist"><i class="fa fa-heart-o"></i></a>
+                                                        <a href="/compare"><i class="fa fa-repeat"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="content">
+                                                <h2><a th:href="@{product-details/{id}(id=${featuredproducts.productId})}"><span th:text="${featuredproducts.productName}"></span></a></h2>
+                                                <span class="prize">$<span th:text="${featuredproducts.productPrice}"></span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Single Product -->
+                                </th>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Product Feature Tab -->
+
+
+
+    <br/>
+
+</div>
+
+
+<!-- Start Footer Area -->
+<footer class="footer-area bg-color plr--100 plr_lg--40 plr_md--30 plr_sm--30 clearfix" data-bg-color="#f4f8fa">
+    <!-- Start Footer Top -->
+    <div class="footer-top ptb--80">
+        <div class="row">
+            <div class="col-custom--5">
+                <div class="footer-widget">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="assets/images/logo/TS_logo.png" alt="Logo">
+                        </a>
+                    </div>
+                    <div class="inner">
+                        <p>These are not the droids you're looking for...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-custom--5 mt_mobile--40">
+                <div class="footer-widget">
+                    <h5 class="title">Who we are</h5>
+                    <div class="inner">
+                        <ul class="ft-link">
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-custom--5 mt_md--40 mt_sm--40">
+                <div class="footer-widget">
+                    <h5 class="title">Categories</h5>
+                    <div class="inner">
+                        <ul class="ft-link">
+                            <li><a href="#">Pricing</a></li>
+                            <li><a href="#">Features</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-custom--5 mt_md--40 mt_sm--40">
+                <div class="footer-widget">
+                    <h5 class="title">Customer Service</h5>
+                    <div class="inner">
+                        <ul class="ft-link">
+                            <li><a href="#">Chat</a></li>
+                            <li><a href="#">Feedback</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-custom--5 mt_md--40 mt_sm--40">
+                <div class="footer-widget">
+                    <h5 class="title">Socialize with us</h5>
+                    <div class="inner">
+                        <ul class="ft-link">
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="#">Twitter</a></li>
+                            <li><a href="#">Linkedin</a></li>
+                            <li><a href="#">Google +</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Footer Top -->
+    <!-- Start Copyright -->
+    <div class="copyright-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="copyright-inner ptb--25 text-center">
+                        <p class="mb--0">Copyright © All Right Reserved</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Copyright -->
+</footer>
+<!-- End Footer Area -->
+
+
+
+
+<!-- JS
+============================================ -->
+
+<!-- Modernizer JS -->
+<script src="assets/js/vendor/modernizr.min.js"></script>
+<!-- jQuery JS -->
+<script src="assets/js/vendor/jquery.js"></script>
+<!-- Bootstrap JS -->
+<script src="assets/js/vendor/bootstrap.min.js"></script>
+<script src="assets/js/plugins/plugins.js"></script>
+<!-- Vendor & Plugins JS (Please remove the comment from below vendor.min.js & plugins.min.js for better website load performance and remove js files from avobe) -->
+<!--
+<script src="assets/js/vendor/vendor.min.js"></script>
+<script src="assets/js/plugins/plugins.min.js"></script>
+-->
+
+<!-- Main JS -->
+<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
