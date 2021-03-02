@@ -43,15 +43,10 @@
                                 </th>
                             </ul>
                         </li>
-                        <li class="lavel-1"><a href="#">Pages</a>
-                            <ul class="dropdown__menu">
-                                <li><a href="/cart"><span>Cart</span></a></li>
-                                <li><a href="/checkout"><span>Checkout</span></a></li>
-                                <li><a href="/myaccount"><span>My Account</span></a></li>
-                                <li><a href="/register"><span>Register Account</span></a></li>
-                            </ul>
-                        </li>
                         <li><a href="/contact">Contact</a></li>
+                        <li><form th:action="@{/search}" style="padding-top:37px;">
+                            <input type="text" name="keyword" placeholder="Search for product" id="keyword" th:value="${keyword}" required style="width:200px; font-size:12px;"/> <input type="submit" value="Search" style="padding:10px; width:100px; font-size:12px;"/>
+                        </form></li>
                     </ul>
                 </nav>
             </div>
