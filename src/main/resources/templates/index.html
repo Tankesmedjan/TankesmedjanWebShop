@@ -199,14 +199,14 @@
 
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="row">
-                                    <th th:each="featuredproducts : ${featuredproducts}">
+                                    <th th:each="onsaleproducts : ${onsaleproducts}">
                                         <!-- Start Single Product -->
                                         <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt--30">
                                             <div class="product">
                                                 <div class="inner">
                                                     <div class="thumbnail">
-                                                        <a th:href="@{product-details/{id}(id=${featuredproducts.productId})}">
-                                                            <img th:src="@{${'/assets/images/product/product-' + featuredproducts.productId + '.jpg'}}" alt="Product Images">
+                                                        <a th:href="@{product-details/{id}(id=${onsaleproducts.productId})}">
+                                                            <img th:src="@{${'/assets/images/product/product-' + onsaleproducts.productId + '.jpg'}}" alt="Product Images">
                                                         </a>
                                                     </div>
                                                     <div class="product-hover-action">
@@ -218,8 +218,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="content">
-                                                    <h2><a th:href="@{product-details/{id}(id=${featuredproducts.productId})}"><span th:text="${featuredproducts.productName}"></span></a></h2>
-                                                    <span class="prize">$<span th:text="${featuredproducts.productPrice}"></span></span>
+                                                    <h2><a th:href="@{product-details/{id}(id=${onsaleproducts.productId})}"><span th:text="${onsaleproducts.productName}"></span></a></h2>
+                                                    <span class="prize">$<span th:text="${onsaleproducts.productPrice}"></span></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -230,14 +230,14 @@
 
                             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                                 <div class="row">
-                                    <th th:each="featuredproducts : ${featuredproducts}">
+                                    <th th:each="topratedproducts : ${topratedproducts}">
                                         <!-- Start Single Product -->
                                         <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt--30">
                                             <div class="product">
                                                 <div class="inner">
                                                     <div class="thumbnail">
-                                                        <a th:href="@{product-details/{id}(id=${featuredproducts.productId})}">
-                                                            <img th:src="@{${'/assets/images/product/product-' + featuredproducts.productId + '.jpg'}}" alt="Product Images">
+                                                        <a th:href="@{product-details/{id}(id=${topratedproducts.productId})}">
+                                                            <img th:src="@{${'/assets/images/product/product-' + topratedproducts.productId + '.jpg'}}" alt="Product Images">
                                                         </a>
                                                     </div>
                                                     <div class="product-hover-action">
@@ -249,8 +249,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="content">
-                                                    <h2><a th:href="@{product-details/{id}(id=${featuredproducts.productId})}"><span th:text="${featuredproducts.productName}"></span></a></h2>
-                                                    <span class="prize">$<span th:text="${featuredproducts.productPrice}"></span></span>
+                                                    <h2><a th:href="@{product-details/{id}(id=${topratedproducts.productId})}"><span th:text="${topratedproducts.productName}"></span></a></h2>
+                                                    <span class="prize">$<span th:text="${topratedproducts.productPrice}"></span></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -285,7 +285,7 @@
                             </a>
                         </div>
                         <div class="inner">
-                            <p>These are not the droids you're looking for...</p>
+                            <p>Together to get there...</p>
                         </div>
                     </div>
                 </div>

@@ -26,9 +26,11 @@ public class ProductService {
         for(int i=0;i<4;i++) {
             Random rnd = new Random();
             int randomInt = rnd.nextInt(5) + 1;
+            while(productList.contains(getProduct(randomInt))){
+                randomInt = rnd.nextInt(5) + 1;
+            }
             productList.add(getProduct(randomInt));
         }
-
         return productList;
     }
 }

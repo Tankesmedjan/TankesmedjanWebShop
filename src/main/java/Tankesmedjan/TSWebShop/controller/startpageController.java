@@ -23,6 +23,8 @@ public class startpageController {
         model.addAttribute("message", "Hi guest! Welcome to our eminent webshop!");
         model.addAttribute("categories", categoryService.listAllCats());
         model.addAttribute("featuredproducts", productService.listRandomProds());
+        model.addAttribute("onsaleproducts", productService.listRandomProds());
+        model.addAttribute("topratedproducts", productService.listRandomProds());
         return "index";
     }
 }
