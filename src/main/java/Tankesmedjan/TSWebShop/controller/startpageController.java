@@ -22,7 +22,7 @@ public class startpageController {
     public String greeting(Model model) {
         model.addAttribute("message", "Hi guest! Welcome to our eminent webshop!");
         model.addAttribute("categories", categoryService.listAllCats());
-        model.addAttribute("products", productService.listRandomProds());
-        return "categories";
+        model.addAttribute("featuredproducts", productService.listRandomProds());
+        return "index";
     }
 }

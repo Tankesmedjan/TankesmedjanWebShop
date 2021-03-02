@@ -1,58 +1,258 @@
-<!DOCTYPE HTML>
+<!doctype html>
+<html class="no-js" lang="en">
 <html xmlns:th>
 <head>
-    <title>Tankesmedjan WebShop</title>
     <meta charset="utf-8">
-    <!-- CSS Files -->
-    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/menu.css">
-    <!--JS FILES -->
-    <script src="js/jquery.tools.min.js"></script>
-    <script>
-$(function () {
-    $("#prod_nav ul").tabs("#panes > div", {
-        effect: 'fade',
-        fadeOutSpeed: 400
-    });
-});
-</script>
-    <script>
-$(document).ready(function () {
-    $(".pane-list li").click(function () {
-        window.location = $(this).find("a").attr("href");
-        return false;
-    });
-});
-</script>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Tankesmedjans 'The Think Tank's Webshop</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/plugins/plugins.css">
+
+
+    <!-- Main Style CSS (Please use minify version for better website load performance) -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!--<link rel="stylesheet" href="assets/css/style.min.css">-->
+
 </head>
+
 <body>
-<div class="header">
-    <!-- Logo/Title -->
-    <div id="site_title"><a href="#"> <img src="img/TS_logo.png" height="120" alt="" style="z-index:0; float:left;"></a><br/></div>
-    <!-- Main Menu -->
-    <ol id="menu">
-        <li><a href="/">Home</a></li>
-        <li><a href="/category">Categories</a>
-            <!-- sub menu -->
-            <ol>
-                <th th:each="categories : ${categories}">
-                    <li><a th:href="@{categories/{id}(id=${categories.categoryId})}"><b th:text="${categories.categoryName}"></b></a></li>
-                </th>
-            </ol>
-        </li>
-        <!-- end sub menu -->
-        <li class="active_menu_item"><a href="/contact">Contact</a></li>
-    </ol>
+
+<header class="header-area haeder-default  black-logo-version ptb_lg--40 ptb_md--40 ptb_sm--30">
+    <div class="header-wrapper container">
+        <div class="row align-items-center">
+            <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-6">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="assets/images/logo/TS_logo.png" width="140" alt="Tankesmedjan logo">
+                    </a>
+                </div>
+            </div>
+            <div class="col-xl-9 d-none d-xl-block">
+                <nav class="mainmenu__nav">
+                    <ul class="primary-menu megamenu-wrapper">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About us</a></li>
+                        <li class="lavel-1"><a href="/categories">Categories</a>
+                            <ul class="dropdown__menu">
+                                <th th:each="categories : ${categories}">
+                                    <li><a th:href="@{categories/{id}(id=${categories.categoryId})}"><span th:text="${categories.categoryName}"></span></a></li>
+                                </th>
+                            </ul>
+                        </li>
+                        <li class="lavel-1"><a href="#">Pages</a>
+                            <ul class="dropdown__menu">
+                                <li><a href="/cart"><span>Cart</span></a></li>
+                                <li><a href="/checkout"><span>Checkout</span></a></li>
+                                <li><a href="/myaccount"><span>My Account</span></a></li>
+                                <li><a href="/register"><span>Register Account</span></a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- CART ICON -->
+
+            <div class="col-xl-1 col-lg-6 col-md-6 col-sm-6 col-6">
+                <div class="header-icon d-flex justify-content-end cart text-right">
+                    <a class="cart-trigger" href="#">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span class="cart-count">11</span>
+                    </a>
+                    <a class="hamburger-trigger d-block d-xl-none pl--15" href="#">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- CONTENTS OF CART -->
+
+<div class="search-flyoveray"></div>
+<div class="cart-flyout">
+    <div class="cart-flyout-inner">
+        <a class="btn-close-cart" href="#">
+            <i class="fa fa-times"></i>
+        </a>
+        <div class="cart-flyout__content">
+            <div class="cart-flyout__heading">Shopping Cart</div>
+            <div class="widget_shopping_cart_content">
+                <ul class="product_list_widget">
+                    <li>
+                        <div class="thumb">
+                            <img src="assets/images/product/sm-product-1.jpg" alt="product">
+                        </div>
+                        <div class="content">
+                            <h6><a href="single-product.html">Really Sweet Sweater</a></h6>
+                            <div class="quntity">11 × $59.99</div>
+                            <button class="remove-btn">×</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <p class="minicart__total">Subtotal: <span class="price">659.89</span></p>
+            <div class="cart__btn">
+                <a href="/cart">View cart</a>
+                <a href="/checkout">Checkout</a>
+            </div>
+        </div>
+    </div>
 </div>
-<!-- END header -->
-<div id="container">
-    <div style="clear:both"></div>
-    <p><br/></p>
-    <h3 style="padding: 20px 0">This is "The Think Tank" (Tankesmedjan)</h3>
-    <blockquote>
-        Gatanvägen 1, Storfors<br/>
+
+<!-- Start Banner Area -->
+<div class="slider-area slider--2">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="slider-activation">
+                    <!-- Start Single Slide -->
+                    <div class="slide-content bg_image bg_image--1 d-flex align-items-center">
+                        <div class="slide-text plr--50">
+                            <p style="color:#FFFFFF;">Shop some pretty things and make yourself smile.</p>
+                            <div class="shop-now-btn">
+                                <button type="button" style="border-color:#FFFFFF; color:#FFFFFF;">Shop Now <i class="fa fa-arrow-right" style="color:#FFFFFF;"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Slide -->
+                    <!-- Start Single Slide -->
+                    <div class="slide-content bg_image bg_image--2 d-flex align-items-center">
+                        <div class="slide-text plr--50">
+                            <p style="color:#FFFFFF;">Lorem Ipsum is simply dummy text of the printing and <br> typesetting industry the printing and typesetting industry.</p>
+                            <div class="shop-now-btn">
+                                <button type="button" style="border-color:#FFFFFF; color:#FFFFFF;">Shop Now <i class="fa fa-arrow-right" style="color:#FFFFFF;"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Slide -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Banner Area -->
+
+<div class="main-wrapper" style="height:200px;">
+    <div class="container">
+        <br/><br/>
+        <h5 class="title"><strong>Contact us</strong></h5>
+        <h6>Gatanvägen 1, Storfors<br/>
         123 45, Göteborg<br/>
-        Sweden
-    </blockquote>
-</div></body>
+        Sweden</h6>
+    </div>
+</div>
+<!-- Start Footer Area -->
+<footer class="footer-area bg-color plr--100 plr_lg--40 plr_md--30 plr_sm--30 clearfix" data-bg-color="#f4f8fa">
+    <!-- Start Footer Top -->
+    <div class="footer-top ptb--80">
+        <div class="row">
+            <div class="col-custom--5">
+                <div class="footer-widget">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="assets/images/logo/TS_logo.png" alt="Logo">
+                        </a>
+                    </div>
+                    <div class="inner">
+                        <p>These are not the droids you're looking for...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-custom--5 mt_mobile--40">
+                <div class="footer-widget">
+                    <h5 class="title">Who we are</h5>
+                    <div class="inner">
+                        <ul class="ft-link">
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-custom--5 mt_md--40 mt_sm--40">
+                <div class="footer-widget">
+                    <h5 class="title">Categories</h5>
+                    <div class="inner">
+                        <ul class="ft-link">
+                            <li><a href="#">Pricing</a></li>
+                            <li><a href="#">Features</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-custom--5 mt_md--40 mt_sm--40">
+                <div class="footer-widget">
+                    <h5 class="title">Customer Service</h5>
+                    <div class="inner">
+                        <ul class="ft-link">
+                            <li><a href="#">Chat</a></li>
+                            <li><a href="#">Feedback</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-custom--5 mt_md--40 mt_sm--40">
+                <div class="footer-widget">
+                    <h5 class="title">Socialize with us</h5>
+                    <div class="inner">
+                        <ul class="ft-link">
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="#">Twitter</a></li>
+                            <li><a href="#">Linkedin</a></li>
+                            <li><a href="#">Google +</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Footer Top -->
+    <!-- Start Copyright -->
+    <div class="copyright-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="copyright-inner ptb--25 text-center">
+                        <p class="mb--0">Copyright © All Right Reserved</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Copyright -->
+</footer>
+<!-- End Footer Area -->
+
+
+
+
+<!-- JS
+============================================ -->
+
+<!-- Modernizer JS -->
+<script src="assets/js/vendor/modernizr.min.js"></script>
+<!-- jQuery JS -->
+<script src="assets/js/vendor/jquery.js"></script>
+<!-- Bootstrap JS -->
+<script src="assets/js/vendor/bootstrap.min.js"></script>
+<script src="assets/js/plugins/plugins.js"></script>
+<!-- Vendor & Plugins JS (Please remove the comment from below vendor.min.js & plugins.min.js for better website load performance and remove js files from avobe) -->
+<!--
+<script src="assets/js/vendor/vendor.min.js"></script>
+<script src="assets/js/plugins/plugins.min.js"></script>
+-->
+
+<!-- Main JS -->
+<script src="assets/js/main.js"></script>
+
+</body>
+
+
 </html>

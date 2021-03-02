@@ -16,7 +16,7 @@ public class TSErrorController implements ErrorController {
     public String errorHandler(Model model) {
         model.addAttribute("categories", categoryService.listAllCats());
         model.addAttribute("message", "ERROR 404 These are not the droids you're looking for...");
-        return "categories";
+        return "index";
     }
     @Override
     public String getErrorPath() {
