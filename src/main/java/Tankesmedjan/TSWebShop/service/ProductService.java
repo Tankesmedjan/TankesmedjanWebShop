@@ -23,7 +23,7 @@ public class ProductService {
     }
     public List<ProductEntity> listRandomProds() {
         List<ProductEntity> productList = new ArrayList<>();
-        for(int i=0;i<5;i++) {
+        for(int i=0;i<4;i++) {
             Random rnd = new Random();
             int randomInt = rnd.nextInt(5) + 1;
             productList.add(getProduct(randomInt));
