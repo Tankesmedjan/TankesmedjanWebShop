@@ -1,6 +1,7 @@
 package Tankesmedjan.TSWebShop.controller;
 
 import Tankesmedjan.TSWebShop.entity.ProductEntity;
+import Tankesmedjan.TSWebShop.service.CategoryService;
 import Tankesmedjan.TSWebShop.service.ProductSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -17,11 +18,15 @@ public class SearchController {
     @Autowired
     private ProductSearchService service;
 
+    @Autowired
+    private CategoryService categoryService;
+
     @RequestMapping("/search")
     public Model viewHomePage(Model model, @Param("keyword") String keyword) {
         List<ProductEntity> listProducts = service.listAll(keyword);
         model.addAttribute("searchResult", listProducts);
         model.addAttribute("keyword", keyword);
+        model.addAttribute("categories", categoryService.listAllCats());
 
         return model;
     }
