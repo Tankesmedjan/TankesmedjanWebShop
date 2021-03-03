@@ -11,11 +11,7 @@
 
     <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/plugins/plugins.css">
-
-
-    <!-- Main Style CSS (Please use minify version for better website load performance) -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <!--<link rel="stylesheet" href="assets/css/style.min.css">-->
 
 </head>
 
@@ -138,7 +134,7 @@
         <br/><br/>
 
         <h4>Search Results</h4>
-        <h5 th:if="${searchResult.empty}"> No products found for your search " <span th:text="${keyword}"></span> " </h5>
+        <h5 th:if="${searchResult.empty}"> No products found for your search "<span th:text="${keyword}"></span>" </h5>
         <table><tbody>
         <tr th:each="searchResult : ${searchResult}">
             <td width="150">
@@ -299,7 +295,7 @@
                         </a>
                     </div>
                     <div class="inner">
-                        <p>These are not the droids you're looking for...</p>
+                        <p>Thinking outside the box</p>
                     </div>
                 </div>
             </div>
