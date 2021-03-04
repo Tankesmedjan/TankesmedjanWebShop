@@ -1,0 +1,50 @@
+<div th:fragmet="header">
+<header class="header-area haeder-default  black-logo-version ptb_lg--40 ptb_md--40 ptb_sm--30">
+    <div class="header-wrapper container">
+        <div class="row align-items-center">
+            <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-6">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="assets/images/logo/TS_logo.png" width="140" alt="Tankesmedjan logo">
+                    </a>
+                </div>
+            </div>
+            <div class="col-xl-9 d-none d-xl-block">
+                <nav class="mainmenu__nav">
+                    <ul class="primary-menu megamenu-wrapper">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About us</a></li>
+                        <li class="lavel-1"><a href="/categories">Categories</a>
+                            <ul class="dropdown__menu">
+                                <th th:each="categories : ${categories}">
+                                    <li><a th:href="@{categories/{id}(id=${categories.categoryId})}"><span th:text="${categories.categoryName}"></span></a></li>
+                                </th>
+                            </ul>
+                        </li>
+                        <li><a href="/contact">Contact</a></li>
+                        <li><form th:action="@{/search}" style="padding-top:37px;">
+                            <input type="text" name="keyword" placeholder="Search for product" id="keyword" th:value="${keyword}" required style="width:200px; font-size:12px;"/> <input type="submit" value="Search" style="padding:10px; width:100px; font-size:12px;"/>
+                        </form></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- CART ICON -->
+            <div class="col-xl-1 col-lg-6 col-md-6 col-sm-6 col-6">
+                <div class="header-icon d-flex justify-content-end cart text-right">
+                    <a class="cart-trigger" href="#">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span class="cart-count">11</span>
+                    </a>
+                    <a class="hamburger-trigger d-block d-xl-none pl--15" href="#">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- CONTENTS OF CART -->
+
+</div>
