@@ -51,30 +51,30 @@
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <div class="row">
-            <!-- Start Single Product -->
-            <div th:each="products : ${products}" class="col-lg-3 col-md-6 col-sm-6 col-12 mt--30">
-                <div class="product">
-                    <div class="inner">
-                        <div class="thumbnail">
-                            <a th:href="@{/product-details/{id}(id=${products.productId})}">
-                                <img th:src="@{${'/assets/images/product/product-' + products.productId + '.jpg'}}" alt="Product Images">
-                            </a>
-                        </div>
-                        <div class="product-hover-action">
-                            <div class="hover-inner">
-                                <a href="/cart"><i class="fa fa-cart-plus"></i></a>
-                                <a href="/wishlist"><i class="fa fa-heart-o"></i></a>
-                                <a href="/compare"><i class="fa fa-repeat"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h2><a th:href="@{product-details/{id}(id=${products.productId})}"><span th:text="${products.productName}"></span></a></h2>
-                        <span class="prize">$<span th:text="${products.productPrice}"></span></span>
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Product -->
+                                        <!-- Start Single Product -->
+                                        <div th:each="products : ${products}" class="col-lg-3 col-md-6 col-sm-6 col-12 mt--30">
+                                            <div class="product">
+                                                <div class="inner">
+                                                    <div class="thumbnail">
+                                                        <a th:href="@{/product-details/{id}(id=${products.productId})}">
+                                                            <img th:src="@{${'/assets/images/product/product-' + products.productId + '.jpg'}}" alt="Product Images">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-hover-action">
+                                                        <div class="hover-inner">
+                                                            <a href="/cart"><i class="fa fa-cart-plus"></i></a>
+                                                            <a href="/wishlist"><i class="fa fa-heart-o"></i></a>
+                                                            <a href="/compare"><i class="fa fa-repeat"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="content">
+                                                    <h2><a th:href="@{product-details/{id}(id=${products.productId})}"><span th:text="${products.productName}"></span></a></h2>
+                                                    <span class="prize">$<span th:text="${products.productPrice}"></span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Single Product -->
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +82,6 @@
                     </div>
                 </div>
             </div>
-
 
     </div>
     <br/>
