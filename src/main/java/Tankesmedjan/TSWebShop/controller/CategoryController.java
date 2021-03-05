@@ -1,25 +1,22 @@
 package Tankesmedjan.TSWebShop.controller;
 
-import Tankesmedjan.TSWebShop.entity.CategoryEntity;
 import Tankesmedjan.TSWebShop.service.CategoryService;
+import Tankesmedjan.TSWebShop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-import java.util.NoSuchElementException;
 
-@RestController
+@Controller
 @RequestMapping("/categories")
 public class CategoryController {
     @Autowired
     CategoryService categoryService;
-
+    @Autowired
+    ProductService productService;
 
     @GetMapping("")
     public Model listCategories(Model model) {
@@ -27,18 +24,13 @@ public class CategoryController {
         model.addAttribute("message", "Hi guest! Welcome to our eminent webshop!");
         return model;
     }
-    public List<CategoryEntity> list() {
 
-        return categoryService.listAllCats();
-    }
     @GetMapping("/{id}")
-    public ResponseEntity<CategoryEntity> get(@PathVariable Integer id) {
-        try {
-            CategoryEntity categoryEntity = categoryService.getCategory(id);
-            return new ResponseEntity<CategoryEntity>(categoryEntity, HttpStatus.OK);
-        } catch (NoSuchElementException e) {
-            return new ResponseEntity<CategoryEntity>(HttpStatus.NOT_FOUND);
-        }
+    public String get(@PathVariable Integer id, Model model) {
+        model.addAttribute("categories", categoryService.listAllCats());
+        model.addAttribute("category", categoryService.getCategory(id).getCategoryName());
+        model.addAttribute("products", productService.listAllProdsFromCat(id));
+        return "category";
     }
 
 }
