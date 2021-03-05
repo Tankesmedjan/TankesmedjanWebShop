@@ -1,0 +1,93 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<html xmlns:th>
+<head th:replace="head :: head"></head>
+<body>
+<div th:replace="header :: header"></div>
+<div class="search-flyoveray"></div>
+<div class="cart-flyout">
+    <div class="cart-flyout-inner">
+        <a class="btn-close-cart" href="#">
+            <i class="fa fa-times"></i>
+        </a>
+        <div class="cart-flyout__content">
+            <div class="cart-flyout__heading">Shopping Cart</div>
+            <div class="widget_shopping_cart_content">
+                <ul class="product_list_widget">
+                    <li>
+                        <div class="thumb">
+                            <img src="/assets/images/product/sm-product-1.jpg" alt="product">
+                        </div>
+                        <div class="content">
+                            <h6><a href="single-product.html">Really Sweet Sweater</a></h6>
+                            <div class="quntity">11 × $59.99</div>
+                            <button class="remove-btn">×</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <p class="minicart__total">Subtotal: <span class="price">659.89</span></p>
+            <div class="cart__btn">
+                <a href="/cart">View cart</a>
+                <a href="/checkout">Checkout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="sliderbanner :: sliderbanner"></div>
+
+<div class="main-wrapper">
+    <div class="container">
+        <br/><br/>
+        <h3 th:text="${category}"></h3>
+        <span th:if="${products.empty}"><b>There are no products in this category... :(</b></span>
+
+
+            <div class="product-sale-area pt--70 bg-color" data-bg-color="#ffffff" th:if="${products != null}">
+                <div class="container">
+                    <div class="row mt--30">
+                        <div class="col-lg-12">
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="row">
+            <!-- Start Single Product -->
+            <div th:each="products : ${products}" class="col-lg-3 col-md-6 col-sm-6 col-12 mt--30">
+                <div class="product">
+                    <div class="inner">
+                        <div class="thumbnail">
+                            <a th:href="@{/product-details/{id}(id=${products.productId})}">
+                                <img th:src="@{${'/assets/images/product/product-' + products.productId + '.jpg'}}" alt="Product Images">
+                            </a>
+                        </div>
+                        <div class="product-hover-action">
+                            <div class="hover-inner">
+                                <a href="/cart"><i class="fa fa-cart-plus"></i></a>
+                                <a href="/wishlist"><i class="fa fa-heart-o"></i></a>
+                                <a href="/compare"><i class="fa fa-repeat"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h2><a th:href="@{product-details/{id}(id=${products.productId})}"><span th:text="${products.productName}"></span></a></h2>
+                        <span class="prize">$<span th:text="${products.productPrice}"></span></span>
+                    </div>
+                </div>
+            </div>
+            <!-- End Single Product -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+    </div>
+    <br/>
+</div>
+
+<footer th:replace="footer :: footer"></footer>
+</body>
+</html>

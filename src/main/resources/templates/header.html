@@ -5,7 +5,7 @@
             <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-6">
                 <div class="logo">
                     <a href="index.html">
-                        <img src="assets/images/logo/TS_logo.png" width="140" alt="Tankesmedjan logo">
+                        <img src="/assets/images/logo/TS_logo.png" width="140" alt="Tankesmedjan logo">
                     </a>
                 </div>
             </div>
@@ -17,7 +17,7 @@
                         <li class="lavel-1"><a href="/categories">Categories</a>
                             <ul class="dropdown__menu">
                                 <th th:each="categories : ${categories}">
-                                    <li><a th:href="@{categories/{id}(id=${categories.categoryId})}"><span th:text="${categories.categoryName}"></span></a></li>
+                                    <li><a th:href="@{/categories/{id}(id=${categories.categoryId})}"><span th:text="${categories.categoryName}"></span></a></li>
                                 </th>
                             </ul>
                         </li>
